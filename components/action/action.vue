@@ -39,11 +39,10 @@
 			return {};
 		},
 		methods: {
-			onClick() {
+			async onClick() {
 				if(this.actionType === 'ajax') {
-					get({
-						actionUrl:'user/index'
-					})
+					const result = await get({url:'user/index'})
+					console.log(result)
 				}
 			}
 		}

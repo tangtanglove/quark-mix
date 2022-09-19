@@ -5,13 +5,37 @@
 </template>
 
 <script>
+	import config from "@/config/config.js"
+	import { get } from "@/services/action.js"
 	import Engine from '@/components/engine/engine.vue';
 	
 	export default {
 		data() {
 			return {
 				title: '首页',
-				body:[
+				body:{}
+			}
+		},
+		onReady() {
+			// 设置标题
+			this.setTitle()
+		},
+		onLoad(option) {
+			this.getComponents(option.api)
+		},
+		methods: {
+			setTitle() {
+				uni.setNavigationBarTitle({
+					title: this.title
+				});
+			},
+			async getComponents(api) {
+				api = api ?? config.apiInitUrl
+				let result = await get({
+					url:api,
+				})
+				
+				this.body = [
 					{
 						component:'swiper',
 					},
@@ -25,17 +49,9 @@
 							type:'primary',
 						}
 					},
-				]
-			}
-		},
-		onReady() {
-			this.setTitle()
-		},
-		methods: {
-			setTitle() {
-				uni.setNavigationBarTitle({
-					title: this.title
-				});
+				];
+				
+				console.log(result)
 			}
 		}
 	}
