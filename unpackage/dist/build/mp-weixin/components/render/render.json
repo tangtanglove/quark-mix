@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "action": "../action/action",
+    "card": "../card/card",
+    "pro-swiper": "../pro-swiper/pro-swiper"
+  }
+}

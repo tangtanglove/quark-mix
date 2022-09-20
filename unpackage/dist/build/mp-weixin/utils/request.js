@@ -1,0 +1,1 @@
+"use strict";var e=require("../common/vendor.js"),t=require("../config/config.js");exports.request=async(r,a)=>{var n;return-1==r.indexOf("http")&&(r=t.config.apiHost+r),(await e.index.request({url:r,data:a.data,method:a.method,header:{Authorization:`Bearer ${null!=(n=e.index.getStorageSync("token"))?n:""}`}})).data};

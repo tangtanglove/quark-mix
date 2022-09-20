@@ -1,6 +1,6 @@
 const config = {
 	apiHost: 'http://localhost:9000',
-	apiInitUrl: "/api/v1/index/index"
+	apiInitUrl: "/api/mix/index/index"
 }
 
 export default config

@@ -1,0 +1,1 @@
+<view wx:if="{{a}}"><view wx:if="{{b}}"><action wx:if="{{c}}" u-i="22af33f2-0" bind:__l="__l" u-p="{{c}}"/></view><view wx:if="{{d}}"><card wx:if="{{e}}" u-i="22af33f2-1" bind:__l="__l" u-p="{{e}}"/></view><view wx:if="{{f}}"><pro-swiper u-i="22af33f2-2" bind:__l="__l"/></view></view><view wx:else> 错误 </view>

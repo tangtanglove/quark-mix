@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "loading",
+  "usingComponents": {
+    "engine": "../../components/engine/engine"
+  }
+}

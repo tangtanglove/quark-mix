@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "engine": "../engine/engine",
+    "uni-card": "../../uni_modules/uni-card/components/uni-card/uni-card"
+  }
+}

@@ -1,0 +1,1 @@
+<view wx:if="{{a}}">{{b}}</view><view wx:elif="{{c}}"><render wx:if="{{d}}" u-i="748766f2-0" bind:__l="__l" u-p="{{d}}"/></view><view wx:else><view wx:for="{{e}}" wx:for-item="item"><render wx:if="{{item.b}}" u-i="{{item.a}}" bind:__l="__l" u-p="{{item.b}}"/></view></view>

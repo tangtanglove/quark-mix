@@ -17,9 +17,9 @@ export const request = async (url, options) => {
 		data: options.data,
 		method: options.method,
 		header: {
-			Authorization: `Bearer ${sessionStorage.getItem('token') ?? ''}`
+			Authorization: `Bearer ${uni.getStorageSync('token') ?? ''}`
 		}
 	});
 	
-	return res;
+	return res.data;
 }

@@ -35,23 +35,7 @@
 					url:api,
 				})
 				
-				this.body = [
-					{
-						component:'swiper',
-					},
-					{
-						component:'card',
-						title:'标题',
-						body:{
-							component:'action',
-							actionType:'ajax',
-							label:'提交',
-							type:'primary',
-						}
-					},
-				];
-				
-				console.log(result)
+				this.body = result.data;
 			}
 		}
 	}
