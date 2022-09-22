@@ -11,13 +11,19 @@ export const request = async (url, options) => {
 	if(url.indexOf("http") == -1) {
 		url = config.apiHost + url;
 	}
+	
+	var token = uni.getStorageSync('token') 
+	
+	if (!token) {
+		token = ''
+	}
 
 	var res = await uni.request({
 		url: url,
 		data: options.data,
 		method: options.method,
 		header: {
-			Authorization: `Bearer ${uni.getStorageSync('token') ?? ''}`
+			Authorization: `Bearer ${token}`
 		}
 	});
 	

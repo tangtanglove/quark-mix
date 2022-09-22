@@ -30,7 +30,13 @@
 				});
 			},
 			async getComponents(api) {
-				api = api ?? config.apiInitUrl
+				
+				if (api) {
+					api = api
+				} else{
+					api = config.apiInitUrl
+				}
+				
 				let result = await get({
 					url:api,
 				})
