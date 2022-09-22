@@ -35,7 +35,11 @@
 					url:api,
 				})
 				
-				this.body = result.data;
+				this.body = result.body;
+				
+				uni.setNavigationBarTitle({
+					title: result.title
+				});
 			}
 		}
 	}
