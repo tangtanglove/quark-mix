@@ -33,7 +33,7 @@
 				
 				if (api) {
 					api = api
-				} else{
+				} else {
 					api = config.apiInitUrl
 				}
 				

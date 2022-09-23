@@ -1,25 +1,23 @@
 <template>
-	<uni-card :title="title" :extra="extra">
+	<uni-row
+		:gutter="gutter"
+	>
 		<engine :body="body" />
-	</uni-card>
+	</uni-row>
 </template>
 
 <script>
 	/**
-	 * Card
+	 * Row
 	 */
 	import Engine from '@/components/engine/engine.vue';
 	
 	export default {
-		name: 'Card',
+		name: 'ProRow',
 		props: {
-			title: {
-				type: String,
-				default: ''
-			},
-			extra: {
-				type: String,
-				default: ''
+			gutter: {
+				type: Number,
+				default: 0
 			},
 			body: {
 				type: [String, Number, Object],

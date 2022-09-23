@@ -4,7 +4,48 @@
 			<action :label="body.label" :type="body.type" />
 		</view>
 		<view v-if="body.component === 'card'">
-			<card :title="body.title" :extra="body.extra" :body="this.body.body" />
+			<pro-card
+				:title="body.title"
+				:subTitle="body.subTitle"
+				:extra="body.extra"
+				:thumbnail="body.thumbnail"
+				:cover="body.cover"
+				:isFull="body.isFull"
+				:isShadow="body.isShadow"
+				:shadow="body.shadow"
+				:border="body.border"
+				:margin="body.margin"
+				:spacing="body.spacing"
+				:padding="body.padding"
+				:body="this.body.body"
+			/>
+		</view>
+		<view v-if="body.component === 'row'">
+			<pro-row
+				:gutter="body.gutter"
+				:body="this.body.body"
+			/>
+		</view>
+		<view v-if="body.component === 'col'">
+			<pro-col
+				:title="body.title"
+				:span="body.span"
+				:offset="body.offset"
+				:push="body.push"
+				:pull="body.pull"
+				:xs="body.xs"
+				:sm="body.sm"
+				:md="body.md"
+				:lg="body.lg"
+				:xl="body.xl"
+				:body="this.body.body"
+			/>
+		</view>
+		<view v-if="body.component === 'list'">
+			<pro-list
+				:border="body.border"
+				:body="this.body.body"
+			/>
 		</view>
 		<view v-if="body.component === 'swiper'">
 			<pro-swiper />
@@ -20,8 +61,11 @@
 	 * Render
 	 */
 	import Action from '@/components/action/action.vue';
-	import Card from '@/components/card/card.vue';
+	import ProCard from '@/components/pro-card/pro-card.vue';
 	import ProSwiper from '@/components/pro-swiper/pro-swiper.vue';
+	import ProRow from '@/components/pro-row/pro-row.vue';
+	import ProCol from '@/components/pro-col/pro-col.vue';
+	import ProList from '@/components/pro-list/pro-list.vue';
 	
 	export default {
 		name: 'Render',
