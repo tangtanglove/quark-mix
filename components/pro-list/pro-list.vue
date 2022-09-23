@@ -2,7 +2,7 @@
 	<uni-list
 		:border="border"
 	>
-		<uni-list-item title="列表文字" link ></uni-list-item>
+		<uni-list-item title="列表文字" link to="/pages/index/index?api=/api/mix/page/login"></uni-list-item>
 		<uni-list-item title="列表文字" ></uni-list-item>
 		<uni-list-item title="列表文字" ></uni-list-item>
 	</uni-list>
