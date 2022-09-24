@@ -1,6 +1,5 @@
 const config = {
-	apiHost: 'http://127.0.0.1:3000',
-	apiInitUrl: "/api/mix/page/index"
+	apiHost: 'http://127.0.0.1:3000'
 }
 
 export default config

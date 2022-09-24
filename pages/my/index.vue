@@ -1,21 +1,15 @@
 <template>
-	<view class="container">
-		Login Page
-	</view>
+	<engine-page :api="api" />
 </template>
 
-<script>	
+<script>
+	import EnginePage from '@/components/engine-page/engine-page.vue';
+	
 	export default {
 		data() {
 			return {
-				title: '登录页'
+				api:'/api/mix/page/my'
 			}
-		},
-		onReady() {
-			
-		},
-		methods: {
-
 		}
 	}
 </script>

@@ -3,25 +3,32 @@
 </template>
 
 <script>
+	import config from "@/config/config.js"
+	import { get } from "@/services/action.js"
 	import EnginePage from '@/components/engine-page/engine-page.vue';
 	
 	export default {
 		data() {
 			return {
-				title: '首页',
-				api:'/api/mix/page/index'
+				api: null
 			}
 		},
 		onReady() {
-			// 设置标题
-			this.setTitle()
+			
+		},
+		onLoad(option) {
+			
+			if(!option.api) {
+				uni.showToast({
+					title: '接口不能为空',
+					duration: 2000
+				});
+			} else {
+				this.api = option.api
+			}
 		},
 		methods: {
-			setTitle() {
-				uni.setNavigationBarTitle({
-					title: this.title
-				});
-			}
+
 		}
 	}
 </script>

@@ -22,7 +22,7 @@
 		name: 'Engine',
 		props: {
 			body: {
-				type: String[String, Number, Object],
+				type: [String, Number, Object],
 				default: ''
 			},
 			data: {

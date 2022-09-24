@@ -4,12 +4,12 @@
 
 <script>
 	/**
-	 * Action 行为
+	 * ProAction 行为
 	 */
 	import { get } from '@/services/action';
 	
 	export default {
-		name: 'Action',
+		name: 'ProAction',
 		emits: ['click'],
 		props: {
 			type: {

@@ -1,7 +1,7 @@
 <template>
     <view v-if="body.hasOwnProperty('component')">
 		<view v-if="body.component === 'action'">
-			<action :label="body.label" :type="body.type" />
+			<pro-action :label="body.label" :type="body.type" />
 		</view>
 		<view v-if="body.component === 'card'">
 			<pro-card
@@ -18,6 +18,13 @@
 				:spacing="body.spacing"
 				:padding="body.padding"
 				:body="this.body.body"
+			/>
+		</view>
+		<view v-if="body.component === 'page'">
+			<pro-page
+				:navBar="body.navBar"
+				:tabBar="body.tabBar"
+				:content="this.body.content"
 			/>
 		</view>
 		<view v-if="body.component === 'row'">
@@ -47,6 +54,26 @@
 				:body="this.body.body"
 			/>
 		</view>
+		<view v-if="body.component === 'navbar' || body.component === 'navBar'">
+			<pro-nav-bar
+				:title="body.title"
+				:leftText="body.leftText"
+				:rightText="body.rightText"
+				:leftIcon="body.leftIcon"
+				:rightIcon="body.rightIcon"
+				:color="body.color"
+				:backgroundColor="body.backgroundColor"
+				:fixed="body.fixed"
+				:statusBar="body.statusBar"
+				:shadow="body.shadow"
+				:border="body.border"
+				:height="body.height"
+				:dark="body.dark"
+				:leftWidth="body.leftWidth"
+				:rightWidth="body.rightWidth"
+				:body="this.body.body"
+			/>
+		</view>
 		<view v-if="body.component === 'swiper'">
 			<pro-swiper />
 		</view>
@@ -60,12 +87,14 @@
 	/**
 	 * Render
 	 */
-	import Action from '@/components/action/action.vue';
+	import ProPage from '@/components/pro-page/pro-page.vue';
+	import ProAction from '@/components/pro-action/pro-action.vue';
 	import ProCard from '@/components/pro-card/pro-card.vue';
 	import ProSwiper from '@/components/pro-swiper/pro-swiper.vue';
 	import ProRow from '@/components/pro-row/pro-row.vue';
 	import ProCol from '@/components/pro-col/pro-col.vue';
 	import ProList from '@/components/pro-list/pro-list.vue';
+	import ProNavBar from '@/components/pro-nav-bar/pro-nav-bar.vue';
 	
 	export default {
 		name: 'Render',
