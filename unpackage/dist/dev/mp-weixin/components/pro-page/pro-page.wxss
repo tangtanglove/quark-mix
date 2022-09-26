@@ -1,0 +1,7 @@
+/* 水平间距 */
+/* 水平间距 */
+.container {
+  padding: 20px;
+  font-size: 14px;
+  line-height: 24px;
+}

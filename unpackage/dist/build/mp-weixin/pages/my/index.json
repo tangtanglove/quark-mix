@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "我的",
+  "usingComponents": {
+    "engine-page": "../../components/engine-page/engine-page"
+  }
+}

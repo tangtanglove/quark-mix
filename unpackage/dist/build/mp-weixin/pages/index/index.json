@@ -1,6 +1,6 @@
 {
-  "navigationBarTitleText": "loading",
+  "navigationBarTitleText": "首页",
   "usingComponents": {
-    "engine": "../../components/engine/engine"
+    "engine-page": "../../components/engine-page/engine-page"
   }
 }

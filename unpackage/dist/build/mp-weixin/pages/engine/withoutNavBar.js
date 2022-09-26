@@ -1,0 +1,1 @@
+"use strict";var e=require("../../common/vendor.js");const a={data:()=>({api:null}),onReady(){},onLoad(a){a.api?this.api=a.api:e.index.showToast({title:"接口不能为空",duration:2e3})},methods:{}};if(!Array){e.resolveComponent("engine-page")()}Math;var n=e._export_sfc(a,[["render",function(a,n,o,r,t,i){return{a:e.p({api:t.api})}}]]);wx.createPage(n);

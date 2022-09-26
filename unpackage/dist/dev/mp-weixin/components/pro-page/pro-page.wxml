@@ -1,0 +1,1 @@
+<view><view wx:if="{{a}}"><pro-nav-bar wx:if="{{b}}" u-i="99b54032-0" bind:__l="__l" u-p="{{b}}"/></view><view class="container"><engine wx:if="{{c}}" u-i="99b54032-1" bind:__l="__l" u-p="{{c}}"/></view></view>

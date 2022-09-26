@@ -1,0 +1,1 @@
+"use strict";var e=require("../../common/vendor.js");const a={data:()=>({api:"/api/mix/page/my"})};if(!Array){e.resolveComponent("engine-page")()}Math;var r=e._export_sfc(a,[["render",function(a,r,n,i,t,o){return{a:e.p({api:t.api})}}]]);wx.createPage(r);

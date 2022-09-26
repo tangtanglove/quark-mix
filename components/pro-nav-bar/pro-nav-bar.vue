@@ -16,6 +16,7 @@
 		:leftWidth="leftWidth"
 		:rightWidth="rightWidth"
 		@clickLeft="back"
+		class="nav-bar"
 	>
 	</uni-nav-bar>
 </template>
@@ -112,5 +113,4 @@
 </script>
 
 <style lang="scss" >
-	
 </style>

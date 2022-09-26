@@ -1,25 +1,5 @@
 <template>
     <view v-if="body.hasOwnProperty('component')">
-		<view v-if="body.component === 'action'">
-			<pro-action :label="body.label" :type="body.type" />
-		</view>
-		<view v-if="body.component === 'card'">
-			<pro-card
-				:title="body.title"
-				:subTitle="body.subTitle"
-				:extra="body.extra"
-				:thumbnail="body.thumbnail"
-				:cover="body.cover"
-				:isFull="body.isFull"
-				:isShadow="body.isShadow"
-				:shadow="body.shadow"
-				:border="body.border"
-				:margin="body.margin"
-				:spacing="body.spacing"
-				:padding="body.padding"
-				:body="this.body.body"
-			/>
-		</view>
 		<view v-if="body.component === 'page'">
 			<pro-page
 				:navBar="body.navBar"
@@ -54,6 +34,30 @@
 				:body="this.body.body"
 			/>
 		</view>
+		<view v-if="body.component === 'listItem'">
+			<pro-list-item
+				:title="body.title"
+				:note="body.note"
+				:ellipsis="body.ellipsis"
+				:thumb="body.thumb"
+				:thumbSize="body.thumbSize"
+				:showBadge="body.showBadge"
+				:badgeText="body.badgeText"
+				:badgeType="body.badgeType"
+				:badgeStyle="body.badgeStyle"
+				:rightText="body.rightText"
+				:disabled="body.disabled"
+				:showArrow="body.showArrow"
+				:link="body.link"
+				:to="body.to"
+				:clickable="body.clickable"
+				:showSwitch="body.showSwitch"
+				:switchChecked="body.switchChecked"
+				:showExtraIcon="body.showExtraIcon"
+				:extraIcon="body.extraIcon"
+				:direction="body.direction"
+			/>
+		</view>
 		<view v-if="body.component === 'navbar' || body.component === 'navBar'">
 			<pro-nav-bar
 				:title="body.title"
@@ -74,8 +78,28 @@
 				:body="this.body.body"
 			/>
 		</view>
+		<view v-if="body.component === 'action'">
+			<pro-action :label="body.label" :type="body.type" />
+		</view>
 		<view v-if="body.component === 'swiper'">
 			<pro-swiper />
+		</view>
+		<view v-if="body.component === 'card'">
+			<pro-card
+				:title="body.title"
+				:subTitle="body.subTitle"
+				:extra="body.extra"
+				:thumbnail="body.thumbnail"
+				:cover="body.cover"
+				:isFull="body.isFull"
+				:isShadow="body.isShadow"
+				:shadow="body.shadow"
+				:border="body.border"
+				:margin="body.margin"
+				:spacing="body.spacing"
+				:padding="body.padding"
+				:body="this.body.body"
+			/>
 		</view>
     </view>
     <view v-else>
@@ -88,13 +112,14 @@
 	 * Render
 	 */
 	import ProPage from '@/components/pro-page/pro-page.vue';
-	import ProAction from '@/components/pro-action/pro-action.vue';
-	import ProCard from '@/components/pro-card/pro-card.vue';
-	import ProSwiper from '@/components/pro-swiper/pro-swiper.vue';
 	import ProRow from '@/components/pro-row/pro-row.vue';
 	import ProCol from '@/components/pro-col/pro-col.vue';
 	import ProList from '@/components/pro-list/pro-list.vue';
+	import ProListItem from '@/components/pro-list-item/pro-list-item.vue';
 	import ProNavBar from '@/components/pro-nav-bar/pro-nav-bar.vue';
+	import ProAction from '@/components/pro-action/pro-action.vue';
+	import ProSwiper from '@/components/pro-swiper/pro-swiper.vue';
+	import ProCard from '@/components/pro-card/pro-card.vue';
 	
 	export default {
 		name: 'Render',

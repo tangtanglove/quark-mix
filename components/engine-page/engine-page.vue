@@ -23,14 +23,14 @@
 				body:{}
 			}
 		},
-		created() {		
+		mounted() {		
 			if (!this.api) {
 				uni.showToast({
 					title:"接口不能为空"
 				})
+			} else {
+				this.getComponents(this.api)
 			}
-			
-			this.getComponents(this.api)
 		},
 		methods: {
 			async getComponents(api) {

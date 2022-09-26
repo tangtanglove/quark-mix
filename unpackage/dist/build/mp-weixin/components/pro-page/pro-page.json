@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "pro-nav-bar": "../pro-nav-bar/pro-nav-bar",
+    "engine": "../engine/engine"
+  }
+}

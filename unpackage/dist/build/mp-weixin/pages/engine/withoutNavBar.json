@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "引擎页-无原生导航",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "engine-page": "../../components/engine-page/engine-page"
+  }
+}

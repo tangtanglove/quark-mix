@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "引擎页-原生导航",
+  "usingComponents": {
+    "engine-page": "../../components/engine-page/engine-page"
+  }
+}
