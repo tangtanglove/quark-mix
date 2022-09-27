@@ -58,6 +58,43 @@
 				:direction="body.direction"
 			/>
 		</view>
+		<view v-if="body.component === 'section'">
+			<pro-section
+				:type="body.type"
+				:title="body.title"
+				:titleFontSize="body.titleFontSize"
+				:titleColor="body.titleColor"
+				:subTitle="body.subTitle"
+				:subTitleFontSize="body.subTitleFontSize"
+				:subTitleColor="body.subTitleColor"
+				:padding="body.padding"
+				:body="this.body.body"
+			/>
+		</view>
+		<view v-if="body.component === 'group'">
+			<pro-group
+				:title="body.title"
+				:top="body.top"
+				:mode="body.mode"
+				:body="this.body.body"
+			/>
+		</view>
+		<view v-if="body.component === 'grid'">
+			<pro-grid
+				:column="body.column"
+				:borderColor="body.borderColor"
+				:showBorder="body.showBorder"
+				:square="body.square"
+				:highlight="body.highlight"
+				:body="this.body.body"
+			/>
+		</view>
+		<view v-if="body.component === 'gridItem'">
+			<pro-grid-item
+				:index="body.index"
+				:body="this.body.body"
+			/>
+		</view>
 		<view v-if="body.component === 'navbar' || body.component === 'navBar'">
 			<pro-nav-bar
 				:title="body.title"
@@ -116,6 +153,10 @@
 	import ProCol from '@/components/pro-col/pro-col.vue';
 	import ProList from '@/components/pro-list/pro-list.vue';
 	import ProListItem from '@/components/pro-list-item/pro-list-item.vue';
+	import ProSection from '@/components/pro-section/pro-section.vue'
+	import ProGroup from '@/components/pro-group/pro-group.vue'
+	import ProGrid from '@/components/pro-grid/pro-grid.vue';
+	import ProGridItem from '@/components/pro-grid-item/pro-grid-item.vue';
 	import ProNavBar from '@/components/pro-nav-bar/pro-nav-bar.vue';
 	import ProAction from '@/components/pro-action/pro-action.vue';
 	import ProSwiper from '@/components/pro-swiper/pro-swiper.vue';
