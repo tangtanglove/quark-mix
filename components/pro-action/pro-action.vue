@@ -1,5 +1,5 @@
 <template>
-	<button @click="onClick()" :type="type" :size="size">{{label}}</button>
+	<button @click="onClick()" :style="style" :type="type" :size="size">{{label}}</button>
 </template>
 
 <script>
@@ -28,8 +28,8 @@
 				type: String,
 				default: 'ajax'
 			},
-			customStyle: {
-				type: Object,
+			style: {
+				type: [String, Object],
 				default () {
 					return {}
 				}

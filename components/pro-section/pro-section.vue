@@ -8,6 +8,7 @@
 		:subTitleFontSize="subTitleFontSize"
 		:subTitleColor="subTitleColor"
 		:padding="padding"
+		:style="style"
 	>
 		<engine :body="body" />
 	</uni-section>
@@ -58,8 +59,8 @@
 				type: [String, Number, Object],
 				default: ''
 			},
-			customStyle: {
-				type: Object,
+			style: {
+				type: [String, Object],
 				default () {
 					return {}
 				}

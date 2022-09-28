@@ -1,6 +1,7 @@
 <template>
 	<uni-list
 		:border="border"
+		:style="style"
 	>
 		<engine :body="body" />
 	</uni-list>
@@ -23,8 +24,8 @@
 				type: [String, Number, Object],
 				default: ''
 			},
-			customStyle: {
-				type: Object,
+			style: {
+				type: [String, Object],
 				default () {
 					return {}
 				}

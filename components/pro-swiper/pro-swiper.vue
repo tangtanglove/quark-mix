@@ -21,6 +21,7 @@
 		:disableTouch="disableTouch"
 		:touchable="touchable"
 		:easingFunction="easingFunction"
+		:style="style"
 	>
 		<swiper-item v-for="(item ,index) in items" :key="index">
 			<view class="swiper-item">
@@ -136,8 +137,8 @@
 				type: String,
 				default: "default"
 			},
-			customStyle: {
-				type: Object,
+			style: {
+				type: [String, Object],
 				default () {
 					return {}
 				}

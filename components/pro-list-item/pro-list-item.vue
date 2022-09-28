@@ -20,6 +20,7 @@
 		:showExtraIcon="showExtraIcon"
 		:extraIcon="extraIcon"
 		:direction="direction"
+		:style="style"
 	>
 	</uni-list-item>
 </template>
@@ -113,8 +114,8 @@
 				type: String,
 				default: "row"
 			},
-			customStyle: {
-				type: Object,
+			style: {
+				type: [String, Object],
 				default () {
 					return {}
 				}

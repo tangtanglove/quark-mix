@@ -1,5 +1,5 @@
 <template>
-	<uni-swiper-dot :info="items" :current="current" field="title" :mode="mode" :dotsStyles="dotsStyles">
+	<uni-swiper-dot :style="style" :info="items" :current="current" field="title" :mode="mode" :dotsStyles="dotsStyles">
 		<swiper class="swiper-box" @change="change">
 			<swiper-item v-for="(item ,index) in items" :key="index">
 				<view class="swiper-item">
@@ -44,8 +44,8 @@
 				type: Object,
 				default: {}
 			},
-			customStyle: {
-				type: Object,
+			style: {
+				type: [String, Object],
 				default () {
 					return {}
 				}

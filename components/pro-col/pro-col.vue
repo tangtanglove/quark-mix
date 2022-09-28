@@ -9,6 +9,7 @@
 		:md="md"
 		:lg="lg"
 		:xl="xl"
+		:style="style"
 	>
 		<engine :body="body" />
 	</uni-col>
@@ -63,8 +64,8 @@
 				type: [String, Number, Object],
 				default: ''
 			},
-			customStyle: {
-				type: Object,
+			style: {
+				type: [String, Object],
 				default () {
 					return {}
 				}

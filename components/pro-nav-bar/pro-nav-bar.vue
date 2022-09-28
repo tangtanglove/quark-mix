@@ -16,7 +16,7 @@
 		:leftWidth="leftWidth"
 		:rightWidth="rightWidth"
 		@clickLeft="back"
-		class="nav-bar"
+		:style="style"
 	>
 	</uni-nav-bar>
 </template>
@@ -92,8 +92,8 @@
 				type: [String, Number, Object],
 				default: ''
 			},
-			customStyle: {
-				type: Object,
+			style: {
+				type: [String, Object],
 				default () {
 					return {}
 				}

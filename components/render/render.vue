@@ -1,5 +1,12 @@
 <template>
     <view v-if="body.hasOwnProperty('component')">
+		<view v-if="body.component === 'view'">
+			<view
+				:style="body.style"
+			>
+				<engine :body="this.body.body" />
+			</view>
+		</view>
 		<view v-if="body.component === 'page'">
 			<pro-page
 				:style="body.style"
@@ -208,6 +215,7 @@
 	/**
 	 * Render
 	 */
+	import Engine from '@/components/engine/engine.vue';
 	import ProPage from '@/components/pro-page/pro-page.vue';
 	import ProRow from '@/components/pro-row/pro-row.vue';
 	import ProCol from '@/components/pro-col/pro-col.vue';

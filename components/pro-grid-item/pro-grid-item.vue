@@ -1,6 +1,7 @@
 <template>
 	<uni-grid-item
 		:index="index"
+		:style="style"
 	>
 	</uni-grid-item>
 </template>
@@ -18,8 +19,8 @@
 				type: Number,
 				default: 0
 			},
-			customStyle: {
-				type: Object,
+			style: {
+				type: [String, Object],
 				default () {
 					return {}
 				}

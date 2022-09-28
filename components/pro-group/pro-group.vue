@@ -3,6 +3,7 @@
 		:title="title"
 		:top="top"
 		:mode="mode"
+		:style="style"
 	>
 		<engine :body="body" />
 	</uni-group>
@@ -33,8 +34,8 @@
 				type: [String, Number, Object],
 				default: ''
 			},
-			customStyle: {
-				type: Object,
+			style: {
+				type: [String, Object],
 				default () {
 					return {}
 				}

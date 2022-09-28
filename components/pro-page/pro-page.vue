@@ -1,5 +1,5 @@
 <template>
-	<view>
+	<view :style="style">
 		<view v-if="navBar">
 			<pro-nav-bar
 				:title="navBar.title"
@@ -20,7 +20,7 @@
 				:body="this.navBar.body"
 			/>
 		</view>
-		<view class="container">
+		<view>
 			<engine :body="this.content" />
 		</view>
 	</view>
@@ -48,8 +48,8 @@
 				type: [String, Number, Object],
 				default: ''
 			},
-			customStyle: {
-				type: Object,
+			style: {
+				type: [String, Object],
 				default () {
 					return {}
 				}
@@ -62,9 +62,4 @@
 </script>
 
 <style lang="scss" >
-	.container {
-		padding: 20px;
-		font-size: 14px;
-		line-height: 24px;
-	}
 </style>
