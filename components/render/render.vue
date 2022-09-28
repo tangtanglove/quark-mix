@@ -2,6 +2,7 @@
     <view v-if="body.hasOwnProperty('component')">
 		<view v-if="body.component === 'page'">
 			<pro-page
+				:style="body.style"
 				:navBar="body.navBar"
 				:tabBar="body.tabBar"
 				:content="this.body.content"
@@ -9,12 +10,14 @@
 		</view>
 		<view v-if="body.component === 'row'">
 			<pro-row
+				:style="body.style"
 				:gutter="body.gutter"
 				:body="this.body.body"
 			/>
 		</view>
 		<view v-if="body.component === 'col'">
 			<pro-col
+				:style="body.style"
 				:title="body.title"
 				:span="body.span"
 				:offset="body.offset"
@@ -30,12 +33,14 @@
 		</view>
 		<view v-if="body.component === 'list'">
 			<pro-list
+				:style="body.style"
 				:border="body.border"
 				:body="this.body.body"
 			/>
 		</view>
 		<view v-if="body.component === 'listItem'">
 			<pro-list-item
+				:style="body.style"
 				:title="body.title"
 				:note="body.note"
 				:ellipsis="body.ellipsis"
@@ -60,6 +65,7 @@
 		</view>
 		<view v-if="body.component === 'section'">
 			<pro-section
+				:style="body.style"
 				:type="body.type"
 				:title="body.title"
 				:titleFontSize="body.titleFontSize"
@@ -73,6 +79,7 @@
 		</view>
 		<view v-if="body.component === 'group'">
 			<pro-group
+				:style="body.style"
 				:title="body.title"
 				:top="body.top"
 				:mode="body.mode"
@@ -81,6 +88,7 @@
 		</view>
 		<view v-if="body.component === 'grid'">
 			<pro-grid
+				:style="body.style"
 				:column="body.column"
 				:borderColor="body.borderColor"
 				:showBorder="body.showBorder"
@@ -91,12 +99,14 @@
 		</view>
 		<view v-if="body.component === 'gridItem'">
 			<pro-grid-item
+				:style="body.style"
 				:index="body.index"
 				:body="this.body.body"
 			/>
 		</view>
 		<view v-if="body.component === 'navbar' || body.component === 'navBar'">
 			<pro-nav-bar
+				:style="body.style"
 				:title="body.title"
 				:leftText="body.leftText"
 				:rightText="body.rightText"
@@ -116,13 +126,51 @@
 			/>
 		</view>
 		<view v-if="body.component === 'action'">
-			<pro-action :label="body.label" :type="body.type" />
+			<pro-action
+				:style="body.style"
+				:label="body.label"
+				:type="body.type"
+			/>
+		</view>
+		<view v-if="body.component === 'swiperDot'">
+			<pro-swiper-dot
+				:style="body.style"
+				:items="body.items"
+				:current="body.current"
+				:mode="body.mode"
+				:dotsStyles="body.dotsStyles"
+			/>
 		</view>
 		<view v-if="body.component === 'swiper'">
-			<pro-swiper />
+			<pro-swiper
+				:style="body.style"
+				:items="body.items"
+				:indicatorDots="body.indicatorDots"
+				:indicatorColor="body.indicatorColor"
+				:indicatorActiveColor="body.indicatorActiveColor"
+				:activeClass="body.activeClass"
+				:changingClass="body.changingClass"
+				:autoplay="body.autoplay"
+				:current="body.current"
+				:currentItemId="body.currentItemId"
+				:interval="body.interval"
+				:duration="body.duration"
+				:circular="body.circular"
+				:vertical="body.vertical"
+				:previousMargin="body.previousMargin"
+				:nextMargin="body.nextMargin"
+				:acceleration="body.acceleration"
+				:disableProgrammaticAnimation="body.disableProgrammaticAnimation"
+				:displayMultipleItems="body.displayMultipleItems"
+				:skipHiddenItemLayout="body.skipHiddenItemLayout"
+				:disableTouch="body.disableTouch"
+				:touchable="body.touchable"
+				:easingFunction="body.easingFunction"
+			/>
 		</view>
 		<view v-if="body.component === 'card'">
 			<pro-card
+				:style="body.style"
 				:title="body.title"
 				:subTitle="body.subTitle"
 				:extra="body.extra"
@@ -136,6 +184,18 @@
 				:spacing="body.spacing"
 				:padding="body.padding"
 				:body="this.body.body"
+			/>
+		</view>
+		<view v-if="body.component === 'image'">
+			<image
+				:src="body.src"
+				:mode="body.mode"
+				:lazyLoad="body.lazyLoad"
+				:fadeShow="body.fadeShow"
+				:webp="body.webp"
+				:showMenuByLongpress="body.showMenuByLongpress"
+				:draggable="body.draggable"
+				:style="body.style"
 			/>
 		</view>
     </view>
@@ -159,6 +219,7 @@
 	import ProGridItem from '@/components/pro-grid-item/pro-grid-item.vue';
 	import ProNavBar from '@/components/pro-nav-bar/pro-nav-bar.vue';
 	import ProAction from '@/components/pro-action/pro-action.vue';
+	import ProSwiperDot from '@/components/pro-swiper-dot/pro-swiper-dot.vue';
 	import ProSwiper from '@/components/pro-swiper/pro-swiper.vue';
 	import ProCard from '@/components/pro-card/pro-card.vue';
 	
