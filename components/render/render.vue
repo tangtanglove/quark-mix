@@ -205,6 +205,23 @@
 				:style="body.style"
 			/>
 		</view>
+		<view v-if="body.component === 'navigator'">
+			<navigator
+				:style="body.style"
+				:url="body.url"
+				:openType="body.openType"
+				:delta="body.delta"
+				:animationType="body.animationType"
+				:animationDuration="body.animationDuration"
+				:hoverClass="body.hoverClass"
+				:hoverStopPropagation="body.hoverStopPropagation"
+				:hoverStartTime="body.hoverStartTime"
+				:hoverStayTime="body.hoverStayTime"
+				:target="body.target"
+			>
+				<engine :body="this.body.body" />
+			</navigator>
+		</view>
     </view>
     <view v-else>
       错误
