@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "engine": "../engine/engine",
+    "uni-group": "../../uni_modules/uni-group/components/uni-group/uni-group"
+  }
+}

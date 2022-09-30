@@ -1,1 +1,1 @@
-<uni-list-item wx:if="{{a}}" u-i="0f7541e6-0" bind:__l="__l" u-p="{{a}}"></uni-list-item>
+<uni-list-item wx:if="{{b}}" style="{{a}}" u-i="0f7541e6-0" bind:__l="__l" u-p="{{b}}"></uni-list-item>

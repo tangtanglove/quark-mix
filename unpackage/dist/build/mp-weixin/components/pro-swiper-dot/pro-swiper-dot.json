@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "engine": "../engine/engine",
+    "uni-swiper-dot": "../../uni_modules/uni-swiper-dot/components/uni-swiper-dot/uni-swiper-dot"
+  }
+}

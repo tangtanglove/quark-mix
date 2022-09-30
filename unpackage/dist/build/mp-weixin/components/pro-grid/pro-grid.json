@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "engine": "../engine/engine",
+    "uni-grid": "../../uni_modules/uni-grid/components/uni-grid/uni-grid"
+  }
+}

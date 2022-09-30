@@ -3,6 +3,7 @@
 		:index="index"
 		:style="style"
 	>
+		<engine :body="body" />
 	</uni-grid-item>
 </template>
 

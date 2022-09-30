@@ -1,1 +1,1 @@
-<button bindtap="{{b}}" type="{{c}}" size="{{d}}">{{a}}</button>
+<button bindtap="{{b}}" style="{{c}}" type="{{d}}" size="{{e}}">{{a}}</button>

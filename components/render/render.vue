@@ -222,9 +222,55 @@
 				<engine :body="this.body.body" />
 			</navigator>
 		</view>
+		<view v-if="body.component === 'link'">
+			<uni-link
+				:style="body.style"
+				:href="body.href"
+				:text="body.text"
+				:download="body.download"
+				:showUnderLine="body.showUnderLine"
+				:copyTips="body.copyTips"
+				:color="body.color"
+				:fontSize="body.fontSize"
+			>
+				<engine :body="this.body.body" />
+			</uni-link>
+		</view>
+		<view v-if="body.component === 'collapse'">
+			<pro-collapse
+				:style="body.style"
+				:accordion="body.accordion"
+			>
+				<engine :body="this.body.body" />
+			</pro-collapse>
+		</view>
+		<view v-if="body.component === 'collapseItem'">
+			<pro-collapse-item
+				:style="body.style"
+				:title="body.title"
+				:thumb="body.thumb"
+				:disabled="body.disabled"
+				:open="body.open"
+				:showAnimation="body.showAnimation"
+				:border="body.border"
+				:titleBorder="body.titleBorder"
+				:showArrow="body.showArrow"
+				:body="this.body.body"
+			/>
+		</view>
+		<view v-if="body.component === 'segmentedControl'">
+			<pro-segmented-control
+				:style="body.style"
+				:current="body.current"
+				:titles="body.titles"
+				:styleType="body.styleType"
+				:activeColor="body.activeColor"
+				:items="body.items"
+			/>
+		</view>
     </view>
     <view v-else>
-      错误
+      {{body}}
     </view>
 </template>
 
@@ -247,6 +293,9 @@
 	import ProSwiperDot from '@/components/pro-swiper-dot/pro-swiper-dot.vue';
 	import ProSwiper from '@/components/pro-swiper/pro-swiper.vue';
 	import ProCard from '@/components/pro-card/pro-card.vue';
+	import ProCollapse from '@/components/pro-collapse/pro-collapse.vue';
+	import ProCollapseItem from '@/components/pro-collapse-item/pro-collapse-item.vue';
+	import ProSegmentedControl from '@/components/pro-segmented-control/pro-segmented-control.vue';
 	
 	export default {
 		name: 'Render',

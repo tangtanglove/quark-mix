@@ -1,1 +1,1 @@
-<uni-col wx:if="{{b}}" u-s="{{['d']}}" u-i="6b3deaee-0" bind:__l="__l" u-p="{{b}}"><engine wx:if="{{a}}" u-i="6b3deaee-1,6b3deaee-0" bind:__l="__l" u-p="{{a}}"/></uni-col>
+<uni-col wx:if="{{c}}" u-s="{{['d']}}" style="{{b}}" u-i="6b3deaee-0" bind:__l="__l" u-p="{{c}}"><engine wx:if="{{a}}" u-i="6b3deaee-1,6b3deaee-0" bind:__l="__l" u-p="{{a}}"/></uni-col>

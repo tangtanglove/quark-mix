@@ -1,0 +1,1 @@
+<uni-swiper-dot wx:if="{{d}}" u-s="{{['d']}}" style="{{c}}" u-i="f9303d72-0" bind:__l="__l" u-p="{{d}}"><swiper class="swiper-box" bindchange="{{b}}"><swiper-item wx:for="{{a}}" wx:for-item="item" wx:key="c"><view class="swiper-item"><engine wx:if="{{item.b}}" u-i="{{item.a}}" bind:__l="__l" u-p="{{item.b}}"/></view></swiper-item></swiper></uni-swiper-dot>

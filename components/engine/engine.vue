@@ -6,9 +6,9 @@
 		<render :body="this.body" />
     </view>
     <view v-else>
-      <view v-for="item in this.body">
-       <render :body="item" />
-      </view>
+		<view v-for="item in this.body">
+			<render :body="item" />
+		</view>
     </view>
 </template>
 

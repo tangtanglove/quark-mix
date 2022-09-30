@@ -1,0 +1,1 @@
+"use strict";var e=require("../../common/vendor.js");const r={name:"ProGridItem",props:{index:{type:Number,default:0},style:{type:[String,Object],default:()=>({})}},data:()=>({})};if(!Array){e.resolveComponent("uni-grid-item")()}Math;var t=e._export_sfc(r,[["render",function(r,t,n,o,i,a){return{a:e.s(n.style),b:e.p({index:n.index})}}]]);wx.createComponent(t);
