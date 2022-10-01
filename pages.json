@@ -30,6 +30,12 @@
 				"navigationBarTitleText": "引擎页-无原生导航",
 				"navigationStyle": "custom"
 			}
+		},
+		{
+			"path": "pages/test/index",
+			"style": {
+				"navigationBarTitleText": "测试页"
+			}
 		}
 	],
 	"globalStyle": {

@@ -268,6 +268,53 @@
 				:items="body.items"
 			/>
 		</view>
+		<view v-if="body.component === 'icon' || body.component === 'icons'">
+			<uni-icons
+				:size="body.size"
+				:type="body.type"
+				:color="body.color"
+				:customPrefix="body.customPrefix"
+			></uni-icons>
+		</view>
+		<view v-if="body.component === 'video'">
+			<pro-video
+				:src="body.src"
+				:autoplay="body.autoplay"
+				:loop="body.loop"
+				:muted="body.muted"
+				:initialTime="body.initialTime"
+				:duration="body.duration"
+				:controls="body.controls"
+				:danmuList="body.danmuList"
+				:danmuBtn="body.danmuBtn"
+				:enableDanmu="body.enableDanmu"
+				:pageGesture="body.pageGesture"
+				:direction="body.direction"
+				:showProgress="body.showProgress"
+				:showFullscreenBtn="body.showFullscreenBtn"
+				:showPlayBtn="body.showPlayBtn"
+				:showCenterPlayBtn="body.showCenterPlayBtn"
+				:showLoading="body.showLoading"
+				:enableProgressGesture="body.enableProgressGesture"
+				:objectFit="body.objectFit"
+				:poster="body.poster"
+				:showMuteBtn="body.showMuteBtn"
+				:title="body.title"
+				:playBtnPosition="body.playBtnPosition"
+				:mobilenetHintType="body.mobilenetHintType"
+				:enablePlayGesture="body.enablePlayGesture"
+				:autoPauseIfNavigate="body.autoPauseIfNavigate"
+				:autoPauseIfOpenNative="body.autoPauseIfOpenNative"
+				:vslideGesture="body.vslideGesture"
+				:vslideGestureInFullscreen="body.vslideGestureInFullscreen"
+				:adUnitId="body.adUnitId"
+				:posterForCrawler="body.posterForCrawler"
+				:codec="body.codec"
+				:httpCache="body.httpCache"
+				:playStrategy="body.playStrategy"
+				:header="body.header"
+			></pro-video>
+		</view>
     </view>
     <view v-else>
       {{body}}
@@ -296,6 +343,7 @@
 	import ProCollapse from '@/components/pro-collapse/pro-collapse.vue';
 	import ProCollapseItem from '@/components/pro-collapse-item/pro-collapse-item.vue';
 	import ProSegmentedControl from '@/components/pro-segmented-control/pro-segmented-control.vue';
+	import ProVideo from '@/components/pro-video/pro-video.vue';
 	
 	export default {
 		name: 'Render',
