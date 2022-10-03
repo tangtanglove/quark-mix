@@ -151,6 +151,7 @@
 		<view v-if="body.component === 'swiper'">
 			<pro-swiper
 				:style="body.style"
+				:itemStyle="body.itemStyle"
 				:items="body.items"
 				:indicatorDots="body.indicatorDots"
 				:indicatorColor="body.indicatorColor"

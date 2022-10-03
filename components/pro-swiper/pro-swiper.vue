@@ -23,10 +23,8 @@
 		:easingFunction="easingFunction"
 		:style="style"
 	>
-		<swiper-item v-for="(item ,index) in items" :key="index">
-			<view class="swiper-item">
-				<engine :body="item.body" />
-			</view>
+		<swiper-item :style="itemStyle" v-for="(item ,index) in items" :key="index">
+			<engine :body="item.body" />
 		</swiper-item>
 	</swiper>
 </template>
@@ -138,6 +136,12 @@
 				default: "default"
 			},
 			style: {
+				type: [String, Object],
+				default () {
+					return {}
+				}
+			},
+			itemStyle: {
 				type: [String, Object],
 				default () {
 					return {}
