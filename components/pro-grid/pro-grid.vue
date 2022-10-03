@@ -7,7 +7,14 @@
 		:highlight="highlight"
 		:style="style"
 	>
-		<engine :body="body" />
+		<view v-for="(item ,index) in body" :key="index">
+			<uni-grid-item
+				:index="item.index"
+				:style="item.style"
+			>
+				<engine :body="item.body" />
+			</uni-grid-item>
+		</view>
 	</uni-grid>
 </template>
 

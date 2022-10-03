@@ -104,13 +104,6 @@
 				:body="this.body.body"
 			/>
 		</view>
-		<view v-if="body.component === 'gridItem'">
-			<pro-grid-item
-				:style="body.style"
-				:index="body.index"
-				:body="this.body.body"
-			/>
-		</view>
 		<view v-if="body.component === 'navbar' || body.component === 'navBar'">
 			<pro-nav-bar
 				:style="body.style"
@@ -316,6 +309,20 @@
 				:header="body.header"
 			></pro-video>
 		</view>
+		<view v-if="body.component === 'searchbar' || body.component === 'searchBar'">
+			<pro-search-bar
+				:value="body.value"
+				:placeholder="body.placeholder"
+				:radius="body.radius"
+				:clearButton="body.clearButton"
+				:cancelButton="body.cancelButton"
+				:cancelText="body.cancelText"
+				:bgColor="body.bgColor"
+				:maxlength="body.maxlength"
+				:focus="body.focus"
+				:style="body.style"
+			/>
+		</view>
     </view>
     <view v-else>
       {{body}}
@@ -335,7 +342,6 @@
 	import ProSection from '@/components/pro-section/pro-section.vue'
 	import ProGroup from '@/components/pro-group/pro-group.vue'
 	import ProGrid from '@/components/pro-grid/pro-grid.vue';
-	import ProGridItem from '@/components/pro-grid-item/pro-grid-item.vue';
 	import ProNavBar from '@/components/pro-nav-bar/pro-nav-bar.vue';
 	import ProAction from '@/components/pro-action/pro-action.vue';
 	import ProSwiperDot from '@/components/pro-swiper-dot/pro-swiper-dot.vue';
@@ -345,6 +351,7 @@
 	import ProCollapseItem from '@/components/pro-collapse-item/pro-collapse-item.vue';
 	import ProSegmentedControl from '@/components/pro-segmented-control/pro-segmented-control.vue';
 	import ProVideo from '@/components/pro-video/pro-video.vue';
+	import ProSearchBar from '@/components/pro-search-bar/pro-search-bar.vue';
 	
 	export default {
 		name: 'Render',
