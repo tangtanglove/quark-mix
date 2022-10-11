@@ -323,6 +323,20 @@
 				:style="body.style"
 			/>
 		</view>
+		<view v-if="body.component === 'form'">
+			<pro-form
+				:model="body.model"
+				:rules="body.rules"
+				:validateTrigger="body.validateTrigger"
+				:labelPosition="body.labelPosition"
+				:labelWidth="body.labelWidth"
+				:labelAlign="body.labelAlign"
+				:errShowType="body.errShowType"
+				:border="body.border"
+				:body="this.body.body"
+				:style="body.style"
+			/>
+		</view>
     </view>
     <view v-else>
       {{body}}
@@ -352,6 +366,7 @@
 	import ProSegmentedControl from '@/components/pro-segmented-control/pro-segmented-control.vue';
 	import ProVideo from '@/components/pro-video/pro-video.vue';
 	import ProSearchBar from '@/components/pro-search-bar/pro-search-bar.vue';
+	import ProForm from '@/components/pro-form/pro-form.vue';
 	
 	export default {
 		name: 'Render',
