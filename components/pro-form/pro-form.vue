@@ -71,6 +71,26 @@
 							/>
 						</uni-forms-item>
 					</view>
+					<view v-if="item.component==='checkboxField'">
+						<uni-forms-item
+							:name="item.name"
+							:rules="item.rules"
+							:required="item.required"
+							:label="item.label"
+							:labelWidth="item.labelWidth"
+							:errorMessage="item.errorMessage"
+							:labelAlign="item.labelAlign"
+							:labelPosition="item.labelPosition"
+							:validateTrigger="item.validateTrigger"
+							:leftIcon="item.leftIcon"
+							:iconColor="item.iconColor"
+							:style="item.style"
+						>
+							<uni-data-checkbox
+
+							/>
+						</uni-forms-item>
+					</view>
 				</view>
 				<view v-else>
 					<engine :body="body" />
