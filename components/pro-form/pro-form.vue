@@ -14,7 +14,7 @@
 		<view v-for="(item ,index) in this.body" :key="index">
 			<view v-if="item.hasOwnProperty('component')">
 				<view v-if="item.component.indexOf('Field')">
-					<view v-if="item.component==='textField'">
+					<view v-if="item.component==='easyInputField'">
 						<uni-forms-item
 							:name="item.name"
 							:rules="item.rules"
@@ -30,6 +30,7 @@
 							:style="item.style"
 						>
 							<uni-easyinput
+								v-model="model[item.name]"
 								:value="item.value"
 								:type="item.type"
 								:placeholder="item.placeholder"
@@ -71,7 +72,7 @@
 							/>
 						</uni-forms-item>
 					</view>
-					<view v-if="item.component==='checkboxField'">
+					<view v-if="item.component==='dataCheckboxField'">
 						<uni-forms-item
 							:name="item.name"
 							:rules="item.rules"
@@ -87,7 +88,106 @@
 							:style="item.style"
 						>
 							<uni-data-checkbox
-
+								v-model="model[item.name]"
+								
+								:localdata="item.localdata"
+								:mode="item.mode"
+								:multiple="item.multiple"
+								:min="item.min"
+								:max="item.max"
+								:wrap="item.wrap"
+								:icon="item.icon"
+								:selectedColor="item.selectedColor"
+								:selectedTextColor="item.selectedTextColor"
+								:emptyText="item.emptyText"
+								:map="item.map"
+							/>
+						</uni-forms-item>
+					</view>
+					<view v-if="item.component==='dataPickerField'">
+						<uni-forms-item
+							:name="item.name"
+							:rules="item.rules"
+							:required="item.required"
+							:label="item.label"
+							:labelWidth="item.labelWidth"
+							:errorMessage="item.errorMessage"
+							:labelAlign="item.labelAlign"
+							:labelPosition="item.labelPosition"
+							:validateTrigger="item.validateTrigger"
+							:leftIcon="item.leftIcon"
+							:iconColor="item.iconColor"
+							:style="item.style"
+						>
+							<uni-data-picker
+								v-model="model[item.name]"
+								:value="item.value"
+								:localdata="item.localdata"
+								:preload="item.preload"
+								:readonly="item.readonly"
+								:clearIcon="item.clearIcon"
+								:ellipsis="item.ellipsis"
+								:popupTitle="item.popupTitle"
+								:map="item.map"
+							/>
+						</uni-forms-item>
+					</view>
+					<view v-if="item.component==='dataSelectField'">
+						<uni-forms-item
+							:name="item.name"
+							:rules="item.rules"
+							:required="item.required"
+							:label="item.label"
+							:labelWidth="item.labelWidth"
+							:errorMessage="item.errorMessage"
+							:labelAlign="item.labelAlign"
+							:labelPosition="item.labelPosition"
+							:validateTrigger="item.validateTrigger"
+							:leftIcon="item.leftIcon"
+							:iconColor="item.iconColor"
+							:style="item.style"
+						>
+							<uni-data-select
+								v-model="model[item.name]"
+								:value="item.value"
+								:localdata="item.localdata"
+								:clear="item.clear"
+								:label="item.label"
+								:placeholder="item.placeholder"
+								:emptyText="item.emptyText"
+							/>
+						</uni-forms-item>
+					</view>
+					<view v-if="item.component==='datetimePickerField'">
+						<uni-forms-item
+							:name="item.name"
+							:rules="item.rules"
+							:required="item.required"
+							:label="item.label"
+							:labelWidth="item.labelWidth"
+							:errorMessage="item.errorMessage"
+							:labelAlign="item.labelAlign"
+							:labelPosition="item.labelPosition"
+							:validateTrigger="item.validateTrigger"
+							:leftIcon="item.leftIcon"
+							:iconColor="item.iconColor"
+							:style="item.style"
+						>
+							<uni-datetime-picker
+								v-model="model[item.name]"
+								:type="item.type"
+								:value="item.value"
+								:start="item.start"
+								:end="item.end"
+								:returnType="item.returnType"
+								:border="item.border"
+								:rangeSeparator="item.rangeSeparator"
+								:placeholder="item.placeholder"
+								:startPlaceholder="item.startPlaceholder"
+								:endPlaceholder="item.endPlaceholder"
+								:disabled="item.disabled"
+								:clearIcon="item.clearIcon"
+								:hideSecond="item.hideSecond"
 							/>
 						</uni-forms-item>
 					</view>
@@ -100,7 +200,7 @@
 			  	<engine :body="body" />
 			</view>
 		</view>
-		<button type="primary">提交</button>
+		<button @click="submit" type="primary">提交</button>
 	</uni-forms>
 </template>
 
@@ -161,10 +261,18 @@
 			}
 		},
 		data() {
-			return {};
+			return {
+				formData:this.model,
+			};
 		},
-		mounted() {	
-			
+		methods: {
+			submit(form) {
+				this.$refs.form.validate().then((res)=>{
+					console.log('表单数据信息：', res);
+				}).catch(err =>{
+					console.log('表单错误信息：', err);
+				})
+			}
 		}
 	};
 </script>
