@@ -325,6 +325,8 @@
 		</view>
 		<view v-if="body.component === 'form'">
 			<pro-form
+				:api="body.api"
+				:apiType="body.apiType"
 				:model="body.model"
 				:rules="body.rules"
 				:validateTrigger="body.validateTrigger"

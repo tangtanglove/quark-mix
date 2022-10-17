@@ -7,11 +7,11 @@ import { request } from '@/utils/request';
  */
 export const get = async (params) => {
 	let url = params.url;
-	delete params['url'];
+	let data = params.data;
 
 	var res = await request(url,{
 		method:'GET',
-		data:params
+		data:data
 	});
 	
 	return res;
@@ -24,11 +24,11 @@ export const get = async (params) => {
  */
 export const post = async (params) => {
 	let url = params.url;
-	delete params['url'];
+	let data = params.data;
 
 	var res = await request(url,{
 		method:'POST',
-		data:params
+		data:data
 	});
 	
 	return res;

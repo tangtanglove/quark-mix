@@ -1,7 +1,7 @@
 <template>
 	<uni-forms
 		ref="form"
-		:model="model"
+		:model="initialValues"
 		:rules="rules"
 		:validateTrigger="validateTrigger"
 		:labelPosition="labelPosition"
@@ -30,7 +30,7 @@
 							:style="item.style"
 						>
 							<uni-easyinput
-								v-model="model[item.name]"
+								v-model="initialValues[item.name]"
 								:value="item.value"
 								:type="item.type"
 								:placeholder="item.placeholder"
@@ -88,8 +88,7 @@
 							:style="item.style"
 						>
 							<uni-data-checkbox
-								v-model="model[item.name]"
-								
+								v-model="initialValues[item.name]"
 								:localdata="item.localdata"
 								:mode="item.mode"
 								:multiple="item.multiple"
@@ -120,7 +119,7 @@
 							:style="item.style"
 						>
 							<uni-data-picker
-								v-model="model[item.name]"
+								v-model="initialValues[item.name]"
 								:value="item.value"
 								:localdata="item.localdata"
 								:preload="item.preload"
@@ -148,7 +147,7 @@
 							:style="item.style"
 						>
 							<uni-data-select
-								v-model="model[item.name]"
+								v-model="initialValues[item.name]"
 								:value="item.value"
 								:localdata="item.localdata"
 								:clear="item.clear"
@@ -174,7 +173,7 @@
 							:style="item.style"
 						>
 							<uni-datetime-picker
-								v-model="model[item.name]"
+								v-model="initialValues[item.name]"
 								:type="item.type"
 								:value="item.value"
 								:start="item.start"
@@ -189,6 +188,87 @@
 								:clearIcon="item.clearIcon"
 								:hideSecond="item.hideSecond"
 							/>
+						</uni-forms-item>
+					</view>
+					<view v-if="item.component==='switchField'">
+						<uni-forms-item
+							:name="item.name"
+							:rules="item.rules"
+							:required="item.required"
+							:label="item.label"
+							:labelWidth="item.labelWidth"
+							:errorMessage="item.errorMessage"
+							:labelAlign="item.labelAlign"
+							:labelPosition="item.labelPosition"
+							:validateTrigger="item.validateTrigger"
+							:leftIcon="item.leftIcon"
+							:iconColor="item.iconColor"
+							:style="item.style"
+						>
+							<switch
+								:checked="initialValues[item.name]"
+								:disabled="item.disabled"
+								:type="item.type"
+								:color="item.color"
+								@change="(e)=>onSwitchChange(e,item.name)"
+							/>
+						</uni-forms-item>
+					</view>
+					<view v-if="item.component==='sliderField'">
+						<uni-forms-item
+							:name="item.name"
+							:rules="item.rules"
+							:required="item.required"
+							:label="item.label"
+							:labelWidth="item.labelWidth"
+							:errorMessage="item.errorMessage"
+							:labelAlign="item.labelAlign"
+							:labelPosition="item.labelPosition"
+							:validateTrigger="item.validateTrigger"
+							:leftIcon="item.leftIcon"
+							:iconColor="item.iconColor"
+							:style="item.style"
+						>
+							<slider
+								:value="initialValues[item.name]"
+								:min="item.min"
+								:max="item.max"
+								:step="item.step"
+								:disabled="item.disabled"
+								:activeColor="item.activeColor"
+								:backgroundColor="item.backgroundColor"
+								:blockSize="item.blockSize"
+								:blockColor="item.blockColor"
+								:showValue="item.showValue"
+								@change="(e)=>onSliderChange(e,item.name)"
+							/>
+						</uni-forms-item>
+					</view>
+					<view v-if="item.component==='pickerField'">
+						<uni-forms-item
+							:name="item.name"
+							:rules="item.rules"
+							:required="item.required"
+							:label="item.label"
+							:labelWidth="item.labelWidth"
+							:errorMessage="item.errorMessage"
+							:labelAlign="item.labelAlign"
+							:labelPosition="item.labelPosition"
+							:validateTrigger="item.validateTrigger"
+							:leftIcon="item.leftIcon"
+							:iconColor="item.iconColor"
+							:style="item.style"
+						>
+							<picker
+								:value="initialValues[item.name]"
+								:range="item.range"
+								:rangeKey="initialValues[item.name]"
+								:selectorType="item.selectorType"
+								:disabled="item.disabled"
+								@change="(e)=>onPickerChange(e,item.name)"
+							>
+								<view>{{item.range[initialValues[item.name]]}}</view>
+							</picker>
 						</uni-forms-item>
 					</view>
 				</view>
@@ -209,10 +289,19 @@
 	 * ProForm
 	 */
 	import Engine from '@/components/engine/engine.vue';
+	import { get, post } from "@/services/action.js"
 	
 	export default {
 		name: 'ProForm',
 		props: {
+			api: {
+				type: String,
+				default:''
+			},
+			apiType: {
+				type: String,
+				default:'POST'
+			},
 			model: {
 				type: Object,
 				default () {
@@ -261,17 +350,86 @@
 			}
 		},
 		data() {
+			var fields = {}
+			let fieldValues = this.getFieldValues(this.body)
+			let fieldKeys = Object.keys(fieldValues)
+			
+			fieldKeys.map((fieldKey) => {
+				if(this.model[fieldKey]) {
+					fields[fieldKey] = this.model[fieldKey]
+				} else {
+					fields[fieldKey] = fieldValues[fieldKey]
+				}
+			});
+			
 			return {
-				formData:this.model,
+				initialValues: fields,
 			};
 		},
 		methods: {
 			submit(form) {
-				this.$refs.form.validate().then((res)=>{
-					console.log('表单数据信息：', res);
+				this.$refs.form.validate().then(async (data)=>{
+					let api = this.api
+					let result = null
+					
+					if (!api) {
+						uni.showToast({
+							title:"表单接口不能为空"
+						})
+						
+						return false;
+					}
+					
+					if (this.apiType === 'POST') {
+						result = await post({
+							url:this.api,
+							data:data
+						})
+					} else {
+						result = await get({
+							url:this.api,
+							data:data
+						})
+					}
+					
+					if (result.status === 'success') {
+						uni.showToast({
+							title:result.msg
+						})
+						
+						if (result.url) {
+							uni.navigateTo({
+								url: result.url
+							});
+						}
+					} else {
+						uni.showToast({
+							title:result.msg,
+							icon:'error'
+						})
+					}
+					
 				}).catch(err =>{
 					console.log('表单错误信息：', err);
 				})
+			},
+			getFieldValues(formFields) {
+				var items = {}
+				formFields.map((value, index) => {
+					items[value.name] = value.value;
+				});
+				
+				return items;
+			},
+			onSwitchChange(e,fieldKey) {
+				this.$refs.form.setValue(fieldKey,e.detail.value)
+			},
+			onSliderChange(e,fieldKey) {
+				this.$refs.form.setValue(fieldKey,e.detail.value)
+			},
+			onPickerChange(e,fieldKey) {
+				console.log('picker发送选择改变，携带值为', e.detail.value)
+				this.$refs.form.setValue(fieldKey,e.detail.value)
 			}
 		}
 	};
