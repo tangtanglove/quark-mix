@@ -190,6 +190,118 @@
 							/>
 						</uni-forms-item>
 					</view>
+					<view v-if="item.component==='inputField'">
+						<uni-forms-item
+							:name="item.name"
+							:rules="item.rules"
+							:required="item.required"
+							:label="item.label"
+							:labelWidth="item.labelWidth"
+							:errorMessage="item.errorMessage"
+							:labelAlign="item.labelAlign"
+							:labelPosition="item.labelPosition"
+							:validateTrigger="item.validateTrigger"
+							:leftIcon="item.leftIcon"
+							:iconColor="item.iconColor"
+							:style="item.style"
+						>
+							<input
+								v-model="initialValues[item.name]"
+								:value="item.value"
+								:type="item.type"
+								:placeholder="item.placeholder"
+								:password="item.password"
+								:placeholderStyle="item.placeholderStyle"
+								:placeholderClass="item.placeholderClass"
+								:disabled="item.disabled"
+								:maxlength="item.maxlength"
+								:cursorSpacing="item.cursorSpacing"
+								:focus="item.focus"
+								:confirmType="item.confirmType"
+								:confirmHold="item.confirmHold"
+								:cursor="item.cursor"
+								:selectionStart="item.selectionStart"
+								:selectionEnd="item.selectionEnd"
+								:adjustPosition="item.adjustPosition"
+								:autoBlur="item.autoBlur"
+								:ignoreCompositionEvent="item.ignoreCompositionEvent"
+								:alwaysEmbed="item.alwaysEmbed"
+								:holdKeyboard="item.holdKeyboard"
+								:safePasswordCertPath="item.safePasswordCertPath"
+								:safePasswordLength="item.safePasswordLength"
+								:safePasswordTimeStamp="item.safePasswordTimeStamp"
+								:safePasswordNonce="item.safePasswordNonce"
+								:safePasswordSalt="item.safePasswordSalt"
+								:safePasswordCustomHash="item.safePasswordCustomHash"
+								:randomNumber="item.randomNumber"
+								:controlled="item.controlled"
+								style="height: 36px;line-height: 36px;"
+							/>
+						</uni-forms-item>
+					</view>
+					<view v-if="item.component==='checkboxField'">
+						<uni-forms-item
+							:name="item.name"
+							:value="item.value"
+							:rules="item.rules"
+							:required="item.required"
+							:label="item.label"
+							:labelWidth="item.labelWidth"
+							:errorMessage="item.errorMessage"
+							:labelAlign="item.labelAlign"
+							:labelPosition="item.labelPosition"
+							:validateTrigger="item.validateTrigger"
+							:leftIcon="item.leftIcon"
+							:iconColor="item.iconColor"
+							:style="item.style"
+						>
+							<checkbox-group
+								@change="(e)=>onCheckboxChange(e,item.name)"
+							>
+								<block v-for="(option ,index) in item.options" :key="index">
+									<label>
+										<checkbox
+											:value="option.value"
+											:disabled="item.disabled"
+											:checked="initialValues[item.name]?(initialValues[item.name].includes(option.value)):false"
+											:color="item.color"
+										/>{{option.text}}
+									</label>
+								</block>
+							</checkbox-group>
+						</uni-forms-item>
+					</view>
+					<view v-if="item.component==='radioField'">
+						<uni-forms-item
+							:name="item.name"
+							:rules="item.rules"
+							:required="item.required"
+							:label="item.label"
+							:labelWidth="item.labelWidth"
+							:errorMessage="item.errorMessage"
+							:labelAlign="item.labelAlign"
+							:labelPosition="item.labelPosition"
+							:validateTrigger="item.validateTrigger"
+							:leftIcon="item.leftIcon"
+							:iconColor="item.iconColor"
+							:style="item.style"
+						>
+							<radio-group
+								@change="(e)=>onRadioChange(e,item.name)"
+							>
+								<block v-for="(option ,index) in item.options" :key="index">
+									<label>
+										<radio
+											:value="option.value"
+											:disabled="item.disabled"
+											:checked="(initialValues[item.name]===option.value)"
+											:color="item.color"
+										/>{{option.text}}
+									</label>
+								</block>
+							</radio-group>
+						</uni-forms-item>
+					</view>
 					<view v-if="item.component==='switchField'">
 						<uni-forms-item
 							:name="item.name"
@@ -260,14 +372,33 @@
 							:style="item.style"
 						>
 							<picker
+								:mode="item.mode"
 								:value="initialValues[item.name]"
+								:start="item.start"
+								:end="item.end"
+								:fields="item.fields"
+								:customItem="item.customItem"
 								:range="item.range"
-								:rangeKey="initialValues[item.name]"
+								:rangeKey="item.rangeKey"
 								:selectorType="item.selectorType"
 								:disabled="item.disabled"
 								@change="(e)=>onPickerChange(e,item.name)"
 							>
-								<view>{{item.range[initialValues[item.name]]}}</view>
+								<view style="height: 36px; line-height: 36px;text-align: end; color: #808080;">
+									<block v-if="item.mode==='selector'">
+										{{!(initialValues[item.name]===null|| initialValues[item.name]===undefined) ? item.range[initialValues[item.name]] : "请选择"}}
+									</block>
+									<block v-if="item.mode==='multiSelector'">
+										{{!(initialValues[item.name]===null|| initialValues[item.name]===undefined) ? item.range[initialValues[item.name]] : "请选择"}}
+									</block>
+									<block v-if="item.mode==='time'">
+										{{!(initialValues[item.name]===null|| initialValues[item.name]===undefined) ? initialValues[item.name] : "请选择"}}
+									</block>
+									<block v-if="item.mode==='date'">
+										{{!(initialValues[item.name]===null|| initialValues[item.name]===undefined) ? initialValues[item.name] : "请选择"}}
+									</block>
+									<uni-icons style="color: #808080;" type="right" size="15"></uni-icons>
+								</view>
 							</picker>
 						</uni-forms-item>
 					</view>
@@ -421,14 +552,39 @@
 				
 				return items;
 			},
+			onCheckboxChange(e,fieldKey) {
+				// 更新初始值
+				this.initialValues[fieldKey] = e.detail.value
+				
+				// 更新表单值
+				this.$refs.form.setValue(fieldKey,e.detail.value)
+			},
+			onRadioChange(e,fieldKey) {
+				// 更新初始值
+				this.initialValues[fieldKey] = e.detail.value
+				
+				// 更新表单值
+				this.$refs.form.setValue(fieldKey,e.detail.value)
+			},
 			onSwitchChange(e,fieldKey) {
+				// 更新初始值
+				this.initialValues[fieldKey] = e.detail.value
+				
+				// 更新表单值
 				this.$refs.form.setValue(fieldKey,e.detail.value)
 			},
 			onSliderChange(e,fieldKey) {
+				// 更新初始值
+				this.initialValues[fieldKey] = e.detail.value
+				
+				// 更新表单值
 				this.$refs.form.setValue(fieldKey,e.detail.value)
 			},
 			onPickerChange(e,fieldKey) {
-				console.log('picker发送选择改变，携带值为', e.detail.value)
+				// 更新初始值
+				this.initialValues[fieldKey] = e.detail.value
+				
+				// 更新表单值
 				this.$refs.form.setValue(fieldKey,e.detail.value)
 			}
 		}
