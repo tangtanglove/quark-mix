@@ -259,7 +259,7 @@
 								@change="(e)=>onCheckboxChange(e,item.name)"
 							>
 								<block v-for="(option ,index) in item.options" :key="index">
-									<label>
+									<label style="margin-right: 15px; float: left;">
 										<checkbox
 											:value="option.value"
 											:disabled="item.disabled"
@@ -290,7 +290,7 @@
 								@change="(e)=>onRadioChange(e,item.name)"
 							>
 								<block v-for="(option ,index) in item.options" :key="index">
-									<label>
+									<label style="margin-right: 15px; float: left;">
 										<radio
 											:value="option.value"
 											:disabled="item.disabled"
