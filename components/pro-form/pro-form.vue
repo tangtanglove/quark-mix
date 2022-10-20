@@ -411,7 +411,7 @@
 			  	<engine :body="body" />
 			</view>
 		</view>
-		<button @click="submit" type="primary">提交</button>
+		<engine :body="this.actions" />
 	</uni-forms>
 </template>
 
@@ -473,6 +473,10 @@
 				type: [String, Number, Object],
 				default: ''
 			},
+			actions: {
+				type: [String, Number, Object],
+				default: ''
+			},
 			style: {
 				type: [String, Object],
 				default () {
@@ -498,7 +502,7 @@
 			};
 		},
 		methods: {
-			submit(form) {
+			submit() {
 				this.$refs.form.validate().then(async (data)=>{
 					let api = this.api
 					let result = null

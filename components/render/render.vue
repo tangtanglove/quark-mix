@@ -4,7 +4,7 @@
 			<view
 				:style="body.style"
 			>
-				<engine :body="this.body.body" />
+				<engine :body="this.body.body" :data="this.data" />
 			</view>
 		</view>
 		<view v-if="body.component === 'page'">
@@ -13,6 +13,7 @@
 				:navBar="body.navBar"
 				:tabBar="body.tabBar"
 				:content="this.body.content"
+				:data="this.data"
 			/>
 		</view>
 		<view v-if="body.component === 'row'">
@@ -20,6 +21,7 @@
 				:style="body.style"
 				:gutter="body.gutter"
 				:body="this.body.body"
+				:data="this.data"
 			/>
 		</view>
 		<view v-if="body.component === 'col'">
@@ -36,6 +38,7 @@
 				:lg="body.lg"
 				:xl="body.xl"
 				:body="this.body.body"
+				:data="this.data"
 			/>
 		</view>
 		<view v-if="body.component === 'list'">
@@ -43,6 +46,7 @@
 				:style="body.style"
 				:border="body.border"
 				:body="this.body.body"
+				:data="this.data"
 			/>
 		</view>
 		<view v-if="body.component === 'listItem'">
@@ -68,6 +72,7 @@
 				:showExtraIcon="body.showExtraIcon"
 				:extraIcon="body.extraIcon"
 				:direction="body.direction"
+				:data="this.data"
 			/>
 		</view>
 		<view v-if="body.component === 'section'">
@@ -82,6 +87,7 @@
 				:subTitleColor="body.subTitleColor"
 				:padding="body.padding"
 				:body="this.body.body"
+				:data="this.data"
 			/>
 		</view>
 		<view v-if="body.component === 'group'">
@@ -91,6 +97,7 @@
 				:top="body.top"
 				:mode="body.mode"
 				:body="this.body.body"
+				:data="this.data"
 			/>
 		</view>
 		<view v-if="body.component === 'grid'">
@@ -102,6 +109,7 @@
 				:square="body.square"
 				:highlight="body.highlight"
 				:body="this.body.body"
+				:data="this.data"
 			/>
 		</view>
 		<view v-if="body.component === 'navbar' || body.component === 'navBar'">
@@ -123,13 +131,35 @@
 				:leftWidth="body.leftWidth"
 				:rightWidth="body.rightWidth"
 				:body="this.body.body"
+				:data="this.data"
 			/>
 		</view>
 		<view v-if="body.component === 'action'">
 			<pro-action
-				:style="body.style"
 				:label="body.label"
 				:type="body.type"
+				:size="body.size"
+				:plain="body.plain"
+				:disabled="body.disabled"
+				:loading="body.loading"
+				:formType="body.formType"
+				:openType="body.openType"
+				:hoverClass="body.hoverClass"
+				:hoverStartTime="body.hoverStartTime"
+				:hoverStayTime="body.hoverStayTime"
+				:appParameter="body.appParameter"
+				:hoverStopPropagation="body.hoverStopPropagation"
+				:lang="body.lang"
+				:sessionFrom="body.sessionFrom"
+				:sendMessageTitle="body.sendMessageTitle"
+				:sendMessagePath="body.sendMessagePath"
+				:sendMessageImg="body.sendMessageImg"
+				:showMessageCard="body.showMessageCard"
+				:groupId="body.groupId"
+				:guildId="body.guildId"
+				:publicId="body.publicId"
+				:style="body.style"
+				:data="this.data"
 			/>
 		</view>
 		<view v-if="body.component === 'swiperDot'">
@@ -139,6 +169,7 @@
 				:current="body.current"
 				:mode="body.mode"
 				:dotsStyles="body.dotsStyles"
+				:data="this.data"
 			/>
 		</view>
 		<view v-if="body.component === 'swiper'">
@@ -167,6 +198,7 @@
 				:disableTouch="body.disableTouch"
 				:touchable="body.touchable"
 				:easingFunction="body.easingFunction"
+				:data="this.data"
 			/>
 		</view>
 		<view v-if="body.component === 'card'">
@@ -185,6 +217,7 @@
 				:spacing="body.spacing"
 				:padding="body.padding"
 				:body="this.body.body"
+				:data="this.data"
 			/>
 		</view>
 		<view v-if="body.component === 'image'">
@@ -213,7 +246,7 @@
 				:hoverStayTime="body.hoverStayTime"
 				:target="body.target"
 			>
-				<engine :body="this.body.body" />
+				<engine :body="this.body.body" :data="this.data" />
 			</navigator>
 		</view>
 		<view v-if="body.component === 'link'">
@@ -234,8 +267,9 @@
 			<pro-collapse
 				:style="body.style"
 				:accordion="body.accordion"
+				:data="this.data"
 			>
-				<engine :body="this.body.body" />
+				<engine :body="this.body.body" :data="this.data"/>
 			</pro-collapse>
 		</view>
 		<view v-if="body.component === 'collapseItem'">
@@ -250,6 +284,7 @@
 				:titleBorder="body.titleBorder"
 				:showArrow="body.showArrow"
 				:body="this.body.body"
+				:data="this.data"
 			/>
 		</view>
 		<view v-if="body.component === 'segmentedControl'">
@@ -260,6 +295,7 @@
 				:styleType="body.styleType"
 				:activeColor="body.activeColor"
 				:items="body.items"
+				:data="this.data"
 			/>
 		</view>
 		<view v-if="body.component === 'icon' || body.component === 'icons'">
@@ -307,6 +343,7 @@
 				:httpCache="body.httpCache"
 				:playStrategy="body.playStrategy"
 				:header="body.header"
+				:data="this.data"
 			></pro-video>
 		</view>
 		<view v-if="body.component === 'searchbar' || body.component === 'searchBar'">
@@ -321,6 +358,7 @@
 				:maxlength="body.maxlength"
 				:focus="body.focus"
 				:style="body.style"
+				:data="this.data"
 			/>
 		</view>
 		<view v-if="body.component === 'form'">
@@ -335,8 +373,10 @@
 				:labelAlign="body.labelAlign"
 				:errShowType="body.errShowType"
 				:border="body.border"
+				:actions="body.actions"
 				:body="this.body.body"
 				:style="body.style"
+				:data="this.data"
 			/>
 		</view>
     </view>

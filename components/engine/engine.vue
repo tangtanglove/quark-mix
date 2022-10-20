@@ -3,11 +3,11 @@
 		{{body}}
 	</view>
     <view v-else-if="body.hasOwnProperty('component')">
-		<render :body="this.body" />
+		<render :body="this.body" :data="this.data" />
     </view>
     <view v-else>
 		<view v-for="item in this.body">
-			<render :body="item" />
+			<render :body="item" :data="this.data" />
 		</view>
     </view>
 </template>
