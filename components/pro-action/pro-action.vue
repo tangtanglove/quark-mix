@@ -38,10 +38,6 @@
 		name: 'ProAction',
 		emits: ['click'],
 		props: {
-			type: {
-				type: String,
-				default: 'default'
-			},
 			label: {
 				type: [String, Number],
 				default: ''
@@ -50,9 +46,85 @@
 				type: String,
 				default: 'small'
 			},
-			actionType: {
+			type: {
 				type: String,
-				default: 'ajax'
+				default: 'default'
+			},
+			plain: {
+				type: Boolean,
+				default: false
+			},
+			disabled: {
+				type: Boolean,
+				default: false
+			},
+			loading: {
+				type: Boolean,
+				default: false
+			},
+			formType: {
+				type: String,
+				default: ''
+			},
+			openType: {
+				type: String,
+				default: ''
+			},
+			hoverClass: {
+				type: String,
+				default: 'button-hover'
+			},
+			hoverStartTime: {
+				type: Number,
+				default: 20
+			},
+			hoverStayTime: {
+				type: Number,
+				default: 70
+			},
+			appParameter: {
+				type: String,
+				default: ''
+			},
+			hoverStopPropagation: {
+				type: Boolean,
+				default: false
+			},
+			lang: {
+				type: String,
+				default: 'en'
+			},
+			sessionFrom: {
+				type: String,
+				default: ''
+			},
+			sendMessageTitle: {
+				type: String,
+				default: '当前标题'
+			},
+			sendMessagePath: {
+				type: String,
+				default: '当前分享路径'
+			},
+			sendMessageImg: {
+				type: String,
+				default: '截图'
+			},
+			showMessageCard: {
+				type: Boolean,
+				default: false
+			},
+			groupId: {
+				type: String,
+				default: ''
+			},
+			guildId: {
+				type: String,
+				default: '',
+			},
+			publicId: {
+				type: String,
+				default: ''
 			},
 			style: {
 				type: [String, Object],
@@ -64,57 +136,18 @@
 				type: [String, Number, Object],
 				default: null
 			},
+			callback: {
+				type: [String, Number, Object, Function],
+				default: null
+			},
 		},
 		data() {
 			return {};
 		},
 		methods: {
-			async onClick() {
-				if(1) {
-					this.data.validate().then(async (data)=>{
-						let api = this.api
-						let result = null
-						
-						if (!api) {
-							uni.showToast({
-								title:"表单接口不能为空"
-							})
-							
-							return false;
-						}
-						
-						if (this.apiType === 'POST') {
-							result = await post({
-								url:this.api,
-								data:data
-							})
-						} else {
-							result = await get({
-								url:this.api,
-								data:data
-							})
-						}
-						
-						if (result.status === 'success') {
-							uni.showToast({
-								title:result.msg
-							})
-							
-							if (result.url) {
-								uni.navigateTo({
-									url: result.url
-								});
-							}
-						} else {
-							uni.showToast({
-								title:result.msg,
-								icon:'error'
-							})
-						}
-						
-					}).catch(err =>{
-						console.log('表单错误信息：', err);
-					})
+			onClick() {
+				if(this.openType == 'submit') {
+					this.callback()
 				}
 			}
 		}

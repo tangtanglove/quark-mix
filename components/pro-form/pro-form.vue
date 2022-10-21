@@ -411,7 +411,7 @@
 			  	<engine :body="body" />
 			</view>
 		</view>
-		<engine :body="this.actions" />
+		<engine :body="this.actions" :callback="submit" />
 	</uni-forms>
 </template>
 
@@ -490,8 +490,12 @@
 			let fieldKeys = Object.keys(fieldValues)
 			
 			fieldKeys.map((fieldKey) => {
-				if(this.model[fieldKey]) {
-					fields[fieldKey] = this.model[fieldKey]
+				if (this.model) {
+					if(this.model.hasOwnProperty(fieldKey)) {
+						fields[fieldKey] = this.model[fieldKey]
+					} else {
+						fields[fieldKey] = fieldValues[fieldKey]
+					}
 				} else {
 					fields[fieldKey] = fieldValues[fieldKey]
 				}

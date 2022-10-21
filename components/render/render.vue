@@ -4,7 +4,11 @@
 			<view
 				:style="body.style"
 			>
-				<engine :body="this.body.body" :data="this.data" />
+				<engine
+					:body="this.body.body"
+					:data="this.data"
+					:callback="this.callback"
+				/>
 			</view>
 		</view>
 		<view v-if="body.component === 'page'">
@@ -14,6 +18,7 @@
 				:tabBar="body.tabBar"
 				:content="this.body.content"
 				:data="this.data"
+				:callback="this.callback"
 			/>
 		</view>
 		<view v-if="body.component === 'row'">
@@ -22,6 +27,7 @@
 				:gutter="body.gutter"
 				:body="this.body.body"
 				:data="this.data"
+				:callback="this.callback"
 			/>
 		</view>
 		<view v-if="body.component === 'col'">
@@ -39,6 +45,7 @@
 				:xl="body.xl"
 				:body="this.body.body"
 				:data="this.data"
+				:callback="this.callback"
 			/>
 		</view>
 		<view v-if="body.component === 'list'">
@@ -47,6 +54,7 @@
 				:border="body.border"
 				:body="this.body.body"
 				:data="this.data"
+				:callback="this.callback"
 			/>
 		</view>
 		<view v-if="body.component === 'listItem'">
@@ -73,6 +81,7 @@
 				:extraIcon="body.extraIcon"
 				:direction="body.direction"
 				:data="this.data"
+				:callback="this.callback"
 			/>
 		</view>
 		<view v-if="body.component === 'section'">
@@ -88,6 +97,7 @@
 				:padding="body.padding"
 				:body="this.body.body"
 				:data="this.data"
+				:callback="this.callback"
 			/>
 		</view>
 		<view v-if="body.component === 'group'">
@@ -98,6 +108,7 @@
 				:mode="body.mode"
 				:body="this.body.body"
 				:data="this.data"
+				:callback="this.callback"
 			/>
 		</view>
 		<view v-if="body.component === 'grid'">
@@ -110,6 +121,7 @@
 				:highlight="body.highlight"
 				:body="this.body.body"
 				:data="this.data"
+				:callback="this.callback"
 			/>
 		</view>
 		<view v-if="body.component === 'navbar' || body.component === 'navBar'">
@@ -132,6 +144,7 @@
 				:rightWidth="body.rightWidth"
 				:body="this.body.body"
 				:data="this.data"
+				:callback="this.callback"
 			/>
 		</view>
 		<view v-if="body.component === 'action'">
@@ -160,6 +173,7 @@
 				:publicId="body.publicId"
 				:style="body.style"
 				:data="this.data"
+				:callback="this.callback"
 			/>
 		</view>
 		<view v-if="body.component === 'swiperDot'">
@@ -170,6 +184,7 @@
 				:mode="body.mode"
 				:dotsStyles="body.dotsStyles"
 				:data="this.data"
+				:callback="this.callback"
 			/>
 		</view>
 		<view v-if="body.component === 'swiper'">
@@ -199,6 +214,7 @@
 				:touchable="body.touchable"
 				:easingFunction="body.easingFunction"
 				:data="this.data"
+				:callback="this.callback"
 			/>
 		</view>
 		<view v-if="body.component === 'card'">
@@ -218,6 +234,7 @@
 				:padding="body.padding"
 				:body="this.body.body"
 				:data="this.data"
+				:callback="this.callback"
 			/>
 		</view>
 		<view v-if="body.component === 'image'">
@@ -246,7 +263,11 @@
 				:hoverStayTime="body.hoverStayTime"
 				:target="body.target"
 			>
-				<engine :body="this.body.body" :data="this.data" />
+				<engine
+					:body="this.body.body"
+					:data="this.data"
+					:callback="this.callback"
+				/>
 			</navigator>
 		</view>
 		<view v-if="body.component === 'link'">
@@ -260,7 +281,11 @@
 				:color="body.color"
 				:fontSize="body.fontSize"
 			>
-				<engine :body="this.body.body" />
+				<engine
+					:body="this.body.body"
+					:data="this.data"
+					:callback="this.callback"
+				/>
 			</uni-link>
 		</view>
 		<view v-if="body.component === 'collapse'">
@@ -268,8 +293,13 @@
 				:style="body.style"
 				:accordion="body.accordion"
 				:data="this.data"
+				:callback="this.callback"
 			>
-				<engine :body="this.body.body" :data="this.data"/>
+				<engine
+					:body="this.body.body"
+					:data="this.data"
+					:callback="this.callback"
+				/>
 			</pro-collapse>
 		</view>
 		<view v-if="body.component === 'collapseItem'">
@@ -285,6 +315,7 @@
 				:showArrow="body.showArrow"
 				:body="this.body.body"
 				:data="this.data"
+				:callback="this.callback"
 			/>
 		</view>
 		<view v-if="body.component === 'segmentedControl'">
@@ -296,6 +327,7 @@
 				:activeColor="body.activeColor"
 				:items="body.items"
 				:data="this.data"
+				:callback="this.callback"
 			/>
 		</view>
 		<view v-if="body.component === 'icon' || body.component === 'icons'">
@@ -344,6 +376,7 @@
 				:playStrategy="body.playStrategy"
 				:header="body.header"
 				:data="this.data"
+				:callback="this.callback"
 			></pro-video>
 		</view>
 		<view v-if="body.component === 'searchbar' || body.component === 'searchBar'">
@@ -359,6 +392,7 @@
 				:focus="body.focus"
 				:style="body.style"
 				:data="this.data"
+				:callback="this.callback"
 			/>
 		</view>
 		<view v-if="body.component === 'form'">
@@ -377,6 +411,7 @@
 				:body="this.body.body"
 				:style="body.style"
 				:data="this.data"
+				:callback="this.callback"
 			/>
 		</view>
     </view>
@@ -424,7 +459,7 @@
 				}
 			},
 			callback: {
-				type: Object,
+				type: [Object, Function],
 				default () {
 					return {}
 				}
