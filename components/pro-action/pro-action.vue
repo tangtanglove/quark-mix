@@ -32,7 +32,7 @@
 	/**
 	 * ProAction 行为
 	 */
-	import { get } from '@/services/action';
+	import { get, post } from '@/services/action';
 	
 	export default {
 		name: 'ProAction',
@@ -126,6 +126,46 @@
 				type: String,
 				default: ''
 			},
+			modal: {
+				type: [String, Object],
+				default () {
+					return {}
+				}
+			},
+			drawer: {
+				type: [String, Object],
+				default () {
+					return {}
+				}
+			},
+			confirmTitle: {
+				type: String,
+				default: ''
+			},
+			confirmText: {
+				type: String,
+				default: ''
+			},
+			confirmType: {
+				type: String,
+				default: ''
+			},
+			api: {
+				type: String,
+				default: ''
+			},
+			apiType: {
+				type: String,
+				default: ''
+			},
+			reload: {
+				type: String,
+				default: ''
+			},
+			withLoading: {
+				type: Boolean,
+				default: false
+			},
 			style: {
 				type: [String, Object],
 				default () {
@@ -145,9 +185,63 @@
 			return {};
 		},
 		methods: {
-			onClick() {
-				if(this.openType == 'submit') {
-					this.callback()
+			async onClick() {
+				switch (this.openType){
+					case 'ajax':
+						if (!this.api) {
+							uni.showToast({
+								title:"接口不能为空"
+							})
+							
+							return false;
+						}
+					
+						let result = false
+						if(this.apiType.toLowerCase() == 'post') {
+							result = await post({
+								url:this.api,
+								data:null
+							})
+						} else if(this.apiType.toLowerCase() == 'get') {
+							result = await get({
+								url:this.api,
+								data:null
+							})
+						}
+						
+						if (result.status === 'success') {
+							uni.showToast({
+								title:result.msg
+							})
+							
+							if (result.url) {
+								uni.navigateTo({
+									url: result.url
+								});
+							}
+						} else {
+							uni.showToast({
+								title:result.msg,
+								icon:'error'
+							})
+						}
+						break;
+					case 'submit':
+						this.callback();
+						break;
+					default:
+						if(this.apiType.toLowerCase() == 'post') {
+							post({
+								url:this.api,
+								data:null
+							})
+						} else if(this.apiType.toLowerCase() == 'get') {
+							get({
+								url:this.api,
+								data:null
+							})
+						}
+						break;
 				}
 			}
 		}
