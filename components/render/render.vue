@@ -171,7 +171,7 @@
 				:groupId="body.groupId"
 				:guildId="body.guildId"
 				:publicId="body.publicId"
-				:modal="body.modal"
+				:popup="body.popup"
 				:drawer="body.drawer"
 				:confirmTitle="body.confirmTitle"
 				:confirmText="body.confirmText"

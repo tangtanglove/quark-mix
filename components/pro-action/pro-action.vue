@@ -26,6 +26,64 @@
 	>
 		{{label}}
 	</button>
+	<view v-if="openType === 'drawer'">
+		<uni-drawer
+			ref="drawer"
+			:mask="drawer.mask"
+			:mask-click="drawer.maskClick"
+			:mode="drawer.mode"
+			:width="drawer.width"
+		>
+			<engine :body="this.drawer.body" />
+		</uni-drawer>
+	</view>
+	<view v-if="openType === 'popup'">
+		<uni-popup
+			ref="popup"
+			:animation="popup.animation"
+			:type="popup.type"
+			:isMaskClick="popup.isMaskClick"
+			:maskBackgroundColor="popup.maskBackgroundColor"
+			:backgroundColor="popup.backgroundColor"
+			:safeArea="popup.safeArea"
+		>
+			<view v-if="popup.type === 'message'">
+				<uni-popup-message
+					:type="popup.messageType"
+					:message="this.popup.body"
+					:duration="popup.messageDuration"
+				>
+				</uni-popup-message>
+			</view>
+			<view v-else-if="popup.type === 'dialog'">
+				<uni-popup-dialog
+					:type="popup.dialogType"
+					:mode="popup.dialogMode"
+					:title="popup.dialogTitle"
+					:confirmText ="popup.dialogConfirmText"
+					:cancelText ="popup.dialogCancelText"
+					:value ="popup.dialogValue"
+					:placeholder ="popup.dialogPlaceholder"
+					:before-close="popup.dialogBeforeClose"
+					:content ="this.popup.body"
+					@close="popupDialogClose"
+					@confirm="popupDialogConfirm"
+				>
+				</uni-popup-dialog>
+			</view>
+			<view v-else-if="popup.type === 'share'">
+				<uni-popup-share
+					:title="popup.shareTitle"
+					:before-close="popup.shareBeforeClose"
+					@select="popupShareSelect"
+				>
+				</uni-popup-share>
+			</view>
+			<view v-else>
+				<engine :body="this.popup.body" />
+			</view>
+		</uni-popup>
+	</view>
 </template>
 
 <script>
@@ -33,6 +91,7 @@
 	 * ProAction 行为
 	 */
 	import { get, post } from '@/services/action';
+	import Engine from '@/components/engine/engine.vue';
 	
 	export default {
 		name: 'ProAction',
@@ -126,7 +185,7 @@
 				type: String,
 				default: ''
 			},
-			modal: {
+			popup: {
 				type: [String, Object],
 				default () {
 					return {}
@@ -229,6 +288,12 @@
 					case 'submit':
 						this.callback();
 						break;
+					case 'drawer':
+						this.$refs.drawer.open();
+						break;
+					case 'popup':
+						this.$refs.popup.open();
+						break;
 					default:
 						if(this.apiType.toLowerCase() == 'post') {
 							post({
@@ -243,6 +308,53 @@
 						}
 						break;
 				}
+			},
+			popupDialogClose() {
+				this.$refs.popup.close();
+			},
+			async popupDialogConfirm(val) {
+				if (!this.api) {					
+					return false;
+				}
+			
+				let result = false
+				if(this.apiType.toLowerCase() == 'post') {
+					result = await post({
+						url:this.api,
+						data:{
+							value:val,
+						}
+					})
+				} else if(this.apiType.toLowerCase() == 'get') {
+					result = await get({
+						url:this.api,
+						data:{
+							value:val,
+						}
+					})
+				}
+				
+				if (result.status === 'success') {
+					uni.showToast({
+						title:result.msg
+					})
+					
+					if (result.url) {
+						uni.navigateTo({
+							url: result.url
+						});
+					}
+					
+					this.$refs.popup.close();
+				} else {
+					uni.showToast({
+						title:result.msg,
+						icon:'error'
+					})
+				}
+			},
+			popupShareSelect(e) {
+				console.log(e)
 			}
 		}
 	};
