@@ -1,0 +1,1 @@
+import{_ as a}from"./engine-page.88db52aa.js";import{o as e,c as p,r,a as i}from"./index.6504538d.js";import{_ as n}from"./plugin-vue_export-helper.21dcd24c.js";var o=n({data:()=>({api:"/api/mix/page/my"})},[["render",function(n,o,s,t,d,m){const g=r(i("engine-page"),a);return e(),p(g,{api:d.api},null,8,["api"])}]]);export{o as default};

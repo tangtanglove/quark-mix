@@ -23,7 +23,16 @@
 				body:{}
 			}
 		},
-		mounted() {		
+		mounted() {
+			if (!this.api) {
+				uni.showToast({
+					title:"接口不能为空"
+				})
+			} else {
+				this.getComponents(this.api)
+			}
+		},
+		activated() {
 			if (!this.api) {
 				uni.showToast({
 					title:"接口不能为空"

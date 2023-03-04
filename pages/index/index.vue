@@ -9,7 +9,7 @@
 		data() {
 			return {
 				title: '首页',
-				api:'/api/mix/page/index'
+				api:'/api/mix/page/index/index'
 			}
 		},
 		onReady() {

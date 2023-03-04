@@ -8,7 +8,7 @@
 	export default {
 		data() {
 			return {
-				api:'/api/mix/page/my'
+				api:'/api/mix/page/my/index'
 			}
 		}
 	}
